@@ -18,7 +18,7 @@ public class Main extends Application {
 
     public void start(Stage stage) {
             board = new Board(9, 9);
-            mainGame = new MainGame(board, Difficulty.EASY);
+            mainGame = new MainGame(board, Difficulty.EASY, true);
             solver = new Solver(mainGame);
 
             VBox mainLayout = new VBox(10);

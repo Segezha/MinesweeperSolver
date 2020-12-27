@@ -7,23 +7,32 @@ import sample.Solver;
 import static org.junit.Assert.assertTrue;
 
 public class SolverTest {
-    MainGame mainGame;
-    Board board;
-    Solver solver;
 
-    public boolean start() {
-        for (int i = 0; i < 10; i++) {
+        MainGame mainGame;
+        Board board;
+        Solver solver;
+
+    @Test
+        public void start() {
             board = new Board(9, 9);
-            mainGame = new MainGame(board, Difficulty.EASY);
+            mainGame = new MainGame(board, Difficulty.EASY, false);
+            board.initEmptyCell();
+            board.getCell(4, 5).setMine();
+            board.getCell(1, 8).setMine();
+            board.getCell(2, 5).setMine();
+            board.getCell(7, 6).setMine();
+            board.getCell(8, 8).setMine();
+            board.getCell(1, 1).setMine();
+            board.getCell(4, 2).setMine();
+            board.getCell(3, 7).setMine();
+            board.getCell(8, 1).setMine();
+            board.getCell(6, 5).setMine();
+
             solver = new Solver(mainGame);
 
             solver.start();
-        }
-        return true;
-    }
-    @Test
-    public void testSolution() {
 
-        assertTrue(start());
-    }
-    }
+            assertTrue(mainGame.isWin());
+        }
+
+}

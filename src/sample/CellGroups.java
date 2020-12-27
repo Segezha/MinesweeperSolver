@@ -1,15 +1,16 @@
 package sample;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
 public class CellGroups {
 
-    private List<Cell> cellsOfGroup;
+    private ArrayList<Cell> cellsOfGroup;
 
     private int bombsCount;
 
-    public CellGroups(List<Cell> cellsOfGroup, int bombsCount) {
+    public CellGroups(ArrayList<Cell> cellsOfGroup, int bombsCount) {
         this.cellsOfGroup = cellsOfGroup;
         this.bombsCount = bombsCount;
     }
