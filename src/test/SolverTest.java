@@ -15,7 +15,7 @@ public class SolverTest {
     @Test
         public void start() {
             board = new Board(9, 9);
-            mainGame = new MainGame(board, Difficulty.EASY, false);
+            mainGame = new MainGame(board, Difficulty.EASY);
             board.initEmptyCell();
             board.getCell(4, 5).setMine();
             board.getCell(1, 8).setMine();

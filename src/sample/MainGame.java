@@ -11,7 +11,6 @@ public class MainGame extends GridPane{
     private boolean win;
     private static final int CELL_SIZE = 20;
     private Board board;
-    private boolean drawing;
 
     private static Image unselected = new Image("image/unselected.gif");
     private static Image mine = new Image("image/mine.gif");
@@ -26,43 +25,38 @@ public class MainGame extends GridPane{
     private static Image seven = new Image("image/seven.gif");
     private static Image eight = new Image("image/eight.gif");
 
-    public MainGame(Board board, Difficulty difficulty, boolean drawing) {
+    public MainGame(Board board, Difficulty difficulty){
 
         this.board = board;
 
-        this.drawing = drawing;
-
         board.init(difficulty);
 
-        if (drawing) {
-            cell = new ImageView[board.getYSize()][board.getXSize()];
+        cell = new ImageView[board.getYSize()][board.getXSize()];
 
-            for (int i = 0; i < board.getYSize(); i++) {
-                for (int j = 0; j < board.getXSize(); j++) {
+        for (int i = 0; i < board.getYSize(); i++){
+            for (int j = 0; j < board.getXSize(); j++){
 
-                    cell[i][j] = new ImageView(unselected);
-                    cell[i][j].setFitHeight(CELL_SIZE);
-                    cell[i][j].setFitWidth(CELL_SIZE);
-                    GridPane.setRowIndex(cell[i][j], i + 1);
-                    GridPane.setColumnIndex(cell[i][j], j + 1);
-                    this.getChildren().add(cell[i][j]);
+                cell[i][j] = new ImageView(unselected);
+                cell[i][j].setFitHeight(CELL_SIZE);
+                cell[i][j].setFitWidth(CELL_SIZE);
+                GridPane.setRowIndex(cell[i][j], i + 1);
+                GridPane.setColumnIndex(cell[i][j], j + 1);
+                this.getChildren().add(cell[i][j]);
 
-                }
             }
         }
     }
 
-    public void flag(int x, int y, Board board) {
+    public void flag(int x, int y, Board board){
 
         board.getCell(x, y).flag();
 
-        if (drawing) {
-            if (board.getCell(x, y).isFlagged()) {
-                cell[y][x].setImage(flag);
-            } else {
-                cell[y][x].setImage(unselected);
-            }
+        if (board.getCell(x, y).isFlagged()){
+            cell[y][x].setImage(flag);
+        } else {
+            cell[y][x].setImage(unselected);
         }
+
     }
 
     public void selectCell(int firstX, int firstY, Cell cell, Board board){
@@ -70,12 +64,12 @@ public class MainGame extends GridPane{
         int x = cell.getX();
         int y = cell.getY();
 
-        if (drawing) this.cell[y][x].setImage(getSelectedImage(board.getCell(x, y)));
+        this.cell[y][x].setImage(getSelectedImage(board.getCell(x, y)));
         board.getCell(x, y).select();
 
         if (board.getCell(x,y).getID().equals(CellValue.MINE) && x == firstX && y == firstY){
 
-            if (drawing) displayAll(board);
+            displayAll(board);
             end = true;
             System.out.println("lose");
 
