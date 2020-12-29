@@ -32,7 +32,7 @@ public class Solver {
                             for (int dy = -1; dy <= 1; dy++) {
                                 int y = j + dy;
                                 if (x >= 0 && y >= 0 && x <= (sizeX - 1) && y <= (sizeY - 1) &&
-                                                !arrayOfCells[x][y].isSelected())
+                                        !arrayOfCells[x][y].isSelected())
                                     cells.add(arrayOfCells[x][y]);
                             }
                         }
@@ -45,7 +45,7 @@ public class Solver {
                                     CellGroups second = listOfGroups.get(n);
                                     int sizeOfFirst = first.getCells().size();
                                     int sizeOfSecond = second.getCells().size();
-                                    if (first.equals(second))
+                                    if (sizeOfFirst == sizeOfSecond && first.equalsInCells(second))
                                         listOfGroups.remove(second);
                                     else if (sizeOfFirst > sizeOfSecond) {
                                         if (first.remove(second)) k = 0;
