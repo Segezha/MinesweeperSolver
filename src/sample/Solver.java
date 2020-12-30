@@ -14,7 +14,7 @@ public class Solver {
         this.mainGame = mainGame;
     }
 
-    public void start() {
+    public boolean start() {
         Cell[][] arrayOfCells = mainGame.getBoard().getCells();
         int sizeX = mainGame.getBoard().getXSize();
         int sizeY = mainGame.getBoard().getYSize();
@@ -74,6 +74,7 @@ public class Solver {
                 }
             }
         }
+        return mainGame.isWin();
     }
 
     private void restructure() {

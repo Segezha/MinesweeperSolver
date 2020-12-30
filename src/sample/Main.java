@@ -29,6 +29,6 @@ public class Main extends Application {
 
         stage.setScene(scene);
         stage.show();
-        solver.start();
+        System.out.println(solver.start());;
     }
 }

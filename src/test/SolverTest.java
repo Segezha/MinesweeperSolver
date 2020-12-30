@@ -8,6 +8,7 @@ import static org.junit.Assert.assertTrue;
 
 public class SolverTest {
 
+    MainGame mainGame;
         Board board;
         Solver solver;
 
@@ -26,11 +27,11 @@ public class SolverTest {
             board.getCell(8, 1).setMine();
             board.getCell(6, 5).setMine();
 
-            //solver = new Solver(board);
+            mainGame = new MainGame(board, Difficulty.EASY);
 
-            solver.start();
+            solver = new Solver(mainGame);
 
-            //assertTrue(board.isWin());
+            assertTrue(solver.start());
         }
 
 }

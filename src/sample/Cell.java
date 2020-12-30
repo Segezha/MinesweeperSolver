@@ -9,7 +9,6 @@ public class Cell {
     private boolean isSelected = false;
     private boolean isFlagged = false;
 
-    private static int numFlag = 0;
 
     public Cell(int x, int y){
         this.id = CellValue.EMPTY;
@@ -37,12 +36,6 @@ public class Cell {
 
     public void flag(){
         isFlagged = !isFlagged;
-
-        if (this.isFlagged()){
-            numFlag++;
-        } else {
-            numFlag--;
-        }
 
     }
 
@@ -75,10 +68,6 @@ public class Cell {
 
     public int getMineCount(){
         return mineCount;
-    }
-
-    public static int getNumFlag(){
-        return numFlag;
     }
 
 }
